@@ -20,5 +20,5 @@ export const insertNorm = async (data: any) => {
   } else {
     return Promise.reject({ success: false, msg: "Insert failed" });
   }
-  //  // return info;cc
+  //  // return info;
 };
