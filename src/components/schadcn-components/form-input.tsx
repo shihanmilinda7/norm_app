@@ -9,16 +9,18 @@ import {
 import { Input } from "../ui/input";
 
 export const ShadcnFormInputField = ({
+  name,
   field,
   control,
   inputClassName = "",
 }: {
+  name:any;
   field: any;
   control: any;
   inputClassName?: string;
 }): any => {
   const label = field.label;
-  const name = field.name;
+  // const name = field.name;
   const placeholder = field.placeholder;
   const inputType = field.inputType;
   const description = field.description;

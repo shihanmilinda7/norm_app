@@ -16,6 +16,10 @@ export const GenerateZodSchema = (mainSchema: any) => {
         const c2 = getStringType(prop);
         if (c2) result[prop.columnName] = c2;
         break;
+      case "ARRAY":
+        const c3 = getArrayType(prop);
+        if (c3) result[prop.columnName] = c3;
+        break;
       default:
         console.log("error in generatezodformschema", prop.dataType);
         break;
@@ -23,6 +27,12 @@ export const GenerateZodSchema = (mainSchema: any) => {
   });
 
   return result;
+};
+// cart: z.array(z.object({ desc: z.string(), amount: z.string() })),
+const getArrayType = (prop: any): any => {
+  const subFormDef = GenerateZodSchema(prop.subSchema);
+  return z.array(z.object(subFormDef));
+  // console.log("subFormDef", subFormDef);
 };
 
 const getNumberType = (prop: any): any => {

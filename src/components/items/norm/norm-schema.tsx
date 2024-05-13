@@ -1,3 +1,35 @@
+const CartSchema = {
+  tableName: "carts",
+  fieldList: {
+    desc: {
+      label: "desc",
+      name: "desc",
+      placeholder: "desc",
+      description: "",
+      inputType: "text",
+      dataType: "STRING",
+      columnName: "desc",
+      db: true,
+      form: true,
+      required: false,
+      default: "amountamount",
+    },
+    amount: {
+      label: "amount",
+      name: "amount",
+      placeholder: "amount",
+      description: "",
+      inputType: "text",
+      dataType: "STRING",
+      columnName: "amount",
+      db: true,
+      form: true,
+      required: true,
+      default: "amountamount",
+    },
+  },
+};
+
 export const NormSchema = {
   tableName: "norms",
   fieldList: {
@@ -32,8 +64,8 @@ export const NormSchema = {
       name: "qty",
       placeholder: "Qty",
       description: "",
-      inputType: "text",
-      dataType: "STRING",
+      inputType: "number",
+      dataType: "NUMBER",
       columnName: "qty",
       db: true,
       form: true,
@@ -52,6 +84,13 @@ export const NormSchema = {
       form: true,
       required: true,
       default: "m2",
+    },
+    cart: {
+      name: "cart",
+      inputType: "array",
+      dataType: "ARRAY",
+      subSchema: CartSchema,
+      columnName: "cart",
     },
   },
 };
