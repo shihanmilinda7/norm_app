@@ -44,21 +44,21 @@ const NormForm = () => {
   });
 
   const { fields, append, prepend, remove } = useFieldArray({
-    name: "cart",
+    name: "materials",
     control: form.control,
   });
 
   async function onSubmit(data: z.infer<typeof NormFormSchema>) {
-    const sampleObj = {
-      normDescription: "new Val",
-      qty: 10,
-      unit: "m3",
-      cart: [
-        { desc: "erer", amount: "fgfg" },
-        { desc: "erer1", amount: "fgfg1" },
-      ],
-    };
-    form.reset(sampleObj);
+    // const sampleObj = {
+    //   normDescription: "new Val",
+    //   qty: 10,
+    //   unit: "m3",
+    //   cart: [
+    //     { desc: "erer", amount: "fgfg" },
+    //     { desc: "erer1", amount: "fgfg1" },
+    //   ],
+    // };
+    // form.reset(sampleObj);
     // setValue("bridgespans", qty);
 
     // const insertQuery = CreateInsertQuery(NormSchema, data);
@@ -79,6 +79,12 @@ const NormForm = () => {
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="">
             <div className="m-1">
+              <ShadcnFormInputField
+                name="normId"
+                field={NormSchema.fieldList.normId}
+                control={form.control}
+                inputClassName="border-indigo-800"
+              />
               <ShadcnFormInputField
                 name="normDescription"
                 field={NormSchema.fieldList.normDescription}
@@ -104,8 +110,8 @@ const NormForm = () => {
               className="block rounded-lg mx-auto bg-blue-300 hover:bg-blue-400 p-4"
               onClick={() =>
                 append({
-                  desc: "ee",
-                  amount: "ee",
+                  normMaterialDetailId: 0,
+                  normId: 0,
                 })
               }
             >
@@ -119,16 +125,47 @@ const NormForm = () => {
                   </div>
 
                   <div className="w-2/4 my-32 flex">
+                    <div className="hidden">
+                      <ShadcnFormInputField
+                        name={`materials.${index}.normMaterialDetailId`}
+                        field={
+                          NormSchema.fieldList.materials.subSchema.fieldList
+                            .normMaterialDetailId
+                        }
+                        control={form.control}
+                        inputClassName="border-indigo-800"
+                      />
+                      <ShadcnFormInputField
+                        name={`materials.${index}.normId`}
+                        field={
+                          NormSchema.fieldList.materials.subSchema.fieldList
+                            .normId
+                        }
+                        control={form.control}
+                        inputClassName="border-indigo-800"
+                      />
+                    </div>
                     <ShadcnFormInputField
-                      name={`cart.${index}.desc`}
-                      field={NormSchema.fieldList.cart.subSchema.fieldList.desc}
+                      name={`materials.${index}.itemName`}
+                      field={
+                        NormSchema.fieldList.materials.subSchema.fieldList
+                          .itemName
+                      }
                       control={form.control}
                       inputClassName="border-indigo-800"
                     />
                     <ShadcnFormInputField
-                      name={`cart.${index}.amount`}
+                      name={`materials.${index}.qty`}
                       field={
-                        NormSchema.fieldList.cart.subSchema.fieldList.amount
+                        NormSchema.fieldList.materials.subSchema.fieldList.qty
+                      }
+                      control={form.control}
+                      inputClassName="border-indigo-800"
+                    />
+                    <ShadcnFormInputField
+                      name={`materials.${index}.unit`}
+                      field={
+                        NormSchema.fieldList.materials.subSchema.fieldList.unit
                       }
                       control={form.control}
                       inputClassName="border-indigo-800"

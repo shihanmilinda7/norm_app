@@ -14,7 +14,7 @@ export const ShadcnFormInputField = ({
   control,
   inputClassName = "",
 }: {
-  name:any;
+  name: any;
   field: any;
   control: any;
   inputClassName?: string;
@@ -24,6 +24,7 @@ export const ShadcnFormInputField = ({
   const placeholder = field.placeholder;
   const inputType = field.inputType;
   const description = field.description;
+  const isDisable = field.disabled ? field.disabled : false;
   return (
     <FormField
       control={control}
@@ -37,6 +38,7 @@ export const ShadcnFormInputField = ({
               type={inputType}
               className={inputClassName}
               {...field}
+              disabled={isDisable}
             />
           </FormControl>
           <FormDescription>{description}</FormDescription>
