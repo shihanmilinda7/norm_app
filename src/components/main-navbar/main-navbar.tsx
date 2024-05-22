@@ -4,6 +4,17 @@ import { FcApproval } from "react-icons/fc";
 import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
+
 const MainNavbar = () => {
   const router = useRouter();
   const addnewNorm = () => {
@@ -14,7 +25,7 @@ const MainNavbar = () => {
     <nav className="bg-indigo-300 border-gray-200 py-2.5 dark:bg-gray-900">
       <div className="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
         <a href="#" className="flex items-center">
-          <FcApproval className="h-6 w-6 mr-3 sm:h-9" />
+          <FcApproval className="h-8 w-8 mr-1 sm:h-9" />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white text-indigo-900">
             OPTI<span className="text-white">Flow</span>
           </span>
@@ -121,6 +132,23 @@ const MainNavbar = () => {
             </li>
           </ul>
         </div>
+        {/* <Drawer>
+          <DrawerTrigger>Open</DrawerTrigger>
+          <DrawerContent>
+            <DrawerHeader>
+              <DrawerTitle>Are you absolutely sure?</DrawerTitle>
+              <DrawerDescription>
+                This action cannot be undone.
+              </DrawerDescription>
+            </DrawerHeader>
+            <DrawerFooter>
+              <Button>Submit</Button>
+              <DrawerClose>
+                <Button variant="outline">Cancel</Button>
+              </DrawerClose>
+            </DrawerFooter>
+          </DrawerContent>
+        </Drawer> */}
       </div>
     </nav>
   );
