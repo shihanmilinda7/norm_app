@@ -44,7 +44,10 @@ const MaterialDrawer = () => {
     <div className="">
       <Drawer>
         <DrawerTrigger>
-          <TooltipProvider>
+          <Badge className="">
+            <FcAddRow className="h-8 w-8" />
+          </Badge>
+          {/* <TooltipProvider>
             <Tooltip>
               <TooltipTrigger
               type="button"
@@ -63,7 +66,7 @@ const MaterialDrawer = () => {
                 <p>Add materials</p>
               </TooltipContent>
             </Tooltip>
-          </TooltipProvider>
+          </TooltipProvider> */}
         </DrawerTrigger>
         <DrawerContent>
           <DrawerHeader>
@@ -78,7 +81,9 @@ const MaterialDrawer = () => {
             />
           </div>
           <DrawerFooter>
-            <Button type="button" className="">Add to list</Button>
+            <Button type="button" className="">
+              Add to list
+            </Button>
             <DrawerClose>
               <Button variant="outline">Cancel</Button>
             </DrawerClose>
